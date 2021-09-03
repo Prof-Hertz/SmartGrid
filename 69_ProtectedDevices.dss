@@ -1,0 +1,48 @@
+new TCC_Curve.Curva_IT_001 npts=21 c_array=(59  63  69  78  97  131  232  273  336  428  570  801  1013  1300  1800  2700  5900  10000  15000  30000  300000)
+~                                  t_array=(0.4  0.35  0.3  0.25  0.2  0.15  0.1  0.09  0.08  0.07  0.06  0.05  0.045  0.04  0.035  0.03  0.025  0.023  0.022  0.021  0.02)
+new TCC_Curve.Curva_IT_003 npts=23 c_array=(46  53  57  62  69  79  96  108  126  149  190  252  385  659  1600  2100  3000  4700  10000  15000  30000  60000  300000)
+~                                  t_array=(1.2  1  0.9  0.8  0.7  0.6  0.5  0.45  0.4  0.35  0.3  0.25  0.2  0.15  0.1  0.09  0.08  0.07  0.06  0.057  0.053  0.051  0.05)
+new TCC_Curve.Curva_IT_005 npts=8  c_array=(45  112  235  415  675  1800  5400  300000)
+~                                  t_array=(10  3  1.5  0.9  0.6  0.3  0.18  0.16)
+new TCC_Curve.Curva_IT_006 npts=16 c_array=(45  112  142  172  219  300  368  476  675  853  1157  1350  1800  4050  5400  300000)
+~                                  t_array=(50  15  12  10  8  6  5  4  3  2.5  2  1.8  1.5  1  0.9  0.8)
+
+new TCC_Curve.Curva_IT_101 npts=8 c_array=(1.0   1.5   1.7   2.0   2.5   3.0   6.0   10.0)
+~                                 t_array=(0.140 0.036 0.025 0.022 0.018 0.016 0.015 0.015)
+new TCC_Curve.Curva_IT_133 npts=7 c_array=(1.0  10.0  15.0  25.0  35.0  50.0  100.0)
+~                                 t_array=(14.0 0.16  0.09  0.052 0.042 0.039 0.039)
+//------------------------------------//
+//Disjuntor
+//--------------------------------------------//
+New Fuse.DJ1 MonitoredObj = line.L1 MonitoredTerm = 1  Fusecurve=Curva_IT_006 ratedcurrent=200 enabled = false ! 65T fuse
+
+
+//------------------------------------//
+//Fusível
+//--------------------------------------------//
+New Fuse.FU28 MonitoredObj = line.L28 MonitoredTerm = 1  Fusecurve=Curva_IT_003 ratedcurrent=200 enabled = false ! 65T fuse
+New Fuse.FU36 MonitoredObj = line.L36 MonitoredTerm = 1  Fusecurve=Curva_IT_003 ratedcurrent=200 enabled = false ! 65T fuse
+New Fuse.FU47 MonitoredObj = line.L47 MonitoredTerm = 1  Fusecurve=Curva_IT_003 ratedcurrent=200 enabled = false ! 65T fuse
+New Fuse.FU51 MonitoredObj = line.L51 MonitoredTerm = 1  Fusecurve=Curva_IT_003 ratedcurrent=200 enabled = false ! 65T fuse
+New Fuse.FU53 MonitoredObj = line.L53 MonitoredTerm = 1  Fusecurve=Curva_IT_003 ratedcurrent=200 enabled = false ! 65T fuse
+New Fuse.FU66 MonitoredObj = line.L66 MonitoredTerm = 1  Fusecurve=Curva_IT_003 ratedcurrent=200 enabled = false ! 65T fuse
+New Fuse.FU68 MonitoredObj = line.L68 MonitoredTerm = 1  Fusecurve=Curva_IT_003 ratedcurrent=200 enabled = false ! 65T fuse
+New Fuse.FU13 MonitoredObj = line.L13 MonitoredTerm = 1  Fusecurve=Curva_IT_003 ratedcurrent=200 enabled = false ! 65T fuse
+
+
+//------------------------------------//
+//Religadores
+//--------------------------------------------//
+New Recloser.RE9 MonitoredObj = line.L9 monitoredterm=1 switchedterm=1 delay=0.042 enabled = false 
+~ numfast=1 phasefast=Curva_IT_001 phasedelayed=Curva_IT_005 phasetrip=200 tdphfast=1 tdphdelayed=1
+~ shots=4 recloseintervals=(2, 2, 5)
+
+
+
+//------------------------------------//
+//Seccionadores NF
+
+
+//Seccionadores NA
+
+
