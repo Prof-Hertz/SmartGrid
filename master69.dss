@@ -1,0 +1,37 @@
+// -----------------------------------------------------------------------//
+// Name: 
+// William Hertz Ganzenmuller 
+// Vinicius Martello
+// João Frederico
+// -----------------------------------------------------------------------//
+
+Clear
+
+// Equivalente de Thevenin
+
+New Circuit.Rede69 bus1=0 basekv=12.66 pu=1.00 phases=3 mvasc3=3000 mvasc1=2500 ! Barra infinita
+
+Redirect 69_Trafo.dss
+Redirect 69_LoadShape.dss
+Redirect 69_LineCodes.dss
+Redirect 69_Lines.dss
+Redirect 69_Loads.dss
+Redirect 69_ProtectedDevices.dss
+
+
+// Medidor
+//New energymeter.medidor element=Transformer.Trafo terminal=1
+New energymeter.medidor element=transformer.trafo_5 terminal=1
+
+//Set voltagebases = [13.8 0.22]
+Set voltagebases = [12.66 0.44 0.22]
+calcVoltagebases
+
+set mode=snap
+//set mode=daily
+//set stepsize = 1h
+//set number = 24
+
+
+Solve
+
