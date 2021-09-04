@@ -1,0 +1,41 @@
+// -----------------------------------------------------------------------//
+// Name: 
+// William Hertz Ganzenmuller 
+// -----------------------------------------------------------------------//
+
+Clear
+
+// Equivalente de Thevenin
+
+New Circuit.Rede69 bus1=0 basekv=12.66 pu=1.00 phases=3 mvasc3=3000 mvasc1=2500 ! Barra infinita
+
+Redirect 69_Trafo.dss
+Redirect 69_LoadShape.dss
+Redirect 69_LineCodes.dss
+Redirect 69_Lines.dss
+Redirect 69_Loads.dss
+Redirect 69_ProtectedDevices.dss
+
+//Melhoria com um capacitor
+//New Capacitor.B10 Bus1= 8 kV= 12.66 kvar=970
+
+//Melhoria com dois capacitores
+New Capacitor.B10 Bus1= 8 kV= 12.66 kvar=583
+New Capacitor.B50 Bus1= 50 kV= 12.66 kvar=420
+
+
+// Medidor
+//New energymeter.medidor element=Transformer.Trafo terminal=1
+New energymeter.medidor element=transformer.trafo_5 terminal=1
+
+//Definindo as Tensões de Base
+Set voltagebases = [12.66 0.44 0.22]
+calcVoltagebases
+
+set mode=snap
+//set mode=daily
+//set stepsize = 1h
+//set number = 24
+
+Solve
+
